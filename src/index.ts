@@ -2,6 +2,7 @@ import { Client, GatewayIntentBits, Collection } from 'discord.js';
 import { config } from './config';
 import { loadCommands } from './utils/commandHandler';
 import { loadEvents } from './utils/eventHandler';
+import { Command } from './types/Command';
 
 const client = new Client({
   intents: [
@@ -10,11 +11,6 @@ const client = new Client({
     GatewayIntentBits.MessageContent,
   ],
 });
-
-interface Command {
-  data: unknown;
-  execute: (interaction: unknown) => Promise<void>;
-}
 
 declare module 'discord.js' {
   export interface Client {
